@@ -2,6 +2,7 @@ package com.jcondori.xlsx;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -23,7 +24,7 @@ public class create_XLSX {
             libro.write(elFichero);
             elFichero.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + e.getLocalizedMessage());
         }
     }
 
