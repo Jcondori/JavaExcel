@@ -14,6 +14,7 @@ public class Test {
 
         List<Model> lista = dao.listarReporte();
         reporteAsistencia.generarReporte(lista);
+
     }
 
 }
