@@ -43,9 +43,9 @@ public class Reporte extends Dao {
                     "    INNER JOIN responsable ON responsable.cod_res = alternancia_detalle.cod_res\n" +
                     "    INNER JOIN empresa ON responsable.cod_emp = empresa.cod_emp\n" +
                     "WHERE\n" +
-                    "    alternancia.cod_aula = 1\n" +
-                    "    AND NUCLEOS.CODNT LIKE 'CI01'\n" +
-                    "ORDER BY alumno.APE_ALUM , asistencia.FCH_DIA";
+                    "    alternancia.cod_aula = 20\n" +
+                    "    AND '[CI08]' LIKE ('%' || NUCLEOS.CODNT || '%')\n" +
+                    "ORDER BY alumno.APE_ALUM , asistencia.FCH_DIA;";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             rs = ps.executeQuery();
             lista = new ArrayList<>();
