@@ -99,4 +99,28 @@ public class Test {
         }
     }
 
+    public void reporteAlternancias(String CIs, String CodAula) throws Exception {
+        this.Conectar();
+
+        //Metodo que crea y devuelve Excel
+        XSSFWorkbook libro = generarReporteAlternancias(CIs, CodAula);
+
+        //Creamos un respuesta HTTP
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        //Le agregamos unas definiciones: Arhivo Adjunto(Descargar) , Nombre del Archivo
+        response.addHeader("Content-disposition", "attachment; filename=ReporteAlternancia.xlsx");
+        //Obtenemos la referencia al contenido de la respuesta HTTP
+        ServletOutputStream stream = response.getOutputStream();
+
+        //Escribimos / Guardamos el excel en el contenido de la respuesta HTTP
+        libro.write(stream);
+
+        //Guardamos
+        stream.flush();
+        //Cerramos
+        stream.close();
+        //Devolvemos la respuesta HTTP construida al navegador
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+
 }
