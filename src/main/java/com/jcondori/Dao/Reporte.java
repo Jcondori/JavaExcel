@@ -45,7 +45,7 @@ public class Reporte extends Dao {
                     "WHERE\n" +
                     "    alternancia.cod_aula = 20\n" +
                     "    AND '[CI08]' LIKE ('%' || NUCLEOS.CODNT || '%')\n" +
-                    "ORDER BY alumno.APE_ALUM , asistencia.FCH_DIA;";
+                    "ORDER BY alumno.APE_ALUM , asistencia.FCH_DIA";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             rs = ps.executeQuery();
             lista = new ArrayList<>();
