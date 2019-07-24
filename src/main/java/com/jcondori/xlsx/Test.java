@@ -112,7 +112,7 @@ public class Test {
         //Obtenemos la referencia al contenido de la respuesta HTTP
         ServletOutputStream stream = response.getOutputStream();
 
-        //Escribimos / Guardamos el excel en el contenido de la respuesta HTTP
+        //Escribimos el excel en el contenido de la respuesta HTTP
         libro.write(stream);
 
         //Guardamos
