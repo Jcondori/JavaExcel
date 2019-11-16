@@ -7,9 +7,9 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Classification_Goods {
+public class odoo_recods {
 
-    public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\Jcondori\\Desktop\\JCondori\\classification_goods.xlsx".replace("\\", "/");
+    public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\jcondori\\Desktop\\excel.xlsx";
 
     public static void main(String[] args) throws IOException, InvalidFormatException {
         InputStream ExcelStream = new FileInputStream(SAMPLE_XLSX_FILE_PATH);
@@ -20,12 +20,12 @@ public class Classification_Goods {
         //System.out.println("\n\nIterating over Rows and Columns using for-each loop\n");
         for (Sheet sheet : excel) {
             for (Row row : sheet) {
-                if (row.getRowNum() != 0) {
-                    String Numero = dataFormatter.formatCellValue(row.getCell(0));
-                    String Descripcion = dataFormatter.formatCellValue(row.getCell(1));
-                    Descripcion = Descripcion.trim();
-                    System.out.println("<record model=\"sunat.classification_goods\" id=\"" + Numero + "\"><field name=\"number\">" + Numero + "</field><field name=\"description\">" + Descripcion + "</field></record>");
-                }
+                    if (row.getRowNum() != 0) {
+                        String Numero = dataFormatter.formatCellValue(row.getCell(0));
+                        String Descripcion = dataFormatter.formatCellValue(row.getCell(1));
+                        Descripcion = Descripcion.trim();
+                        System.out.println("<record model=\"sunat.country\" id=\"sunat_country_" + Numero + "\"><field name=\"code\">" + Numero + "</field><field name=\"name\">" + Descripcion + "</field></record>");
+                    }
             }
             //System.out.println("------------------------------------------------------");
         }
@@ -42,7 +42,7 @@ public class Classification_Goods {
             fileOut.flush();
             fileOut.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Classification_Goods.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(odoo_recods.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

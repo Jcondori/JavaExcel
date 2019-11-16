@@ -1,25 +1,15 @@
 package com.jcondori.xlsx;
 
-import com.jcondori.Dao.Reporte;
-import com.jcondori.model.Model;
-import javafx.geometry.Point2D;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.util.IOUtils;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTPoint2D;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTTransform2D;
-import org.openxmlformats.schemas.drawingml.x2006.main.impl.CTPoint2DImpl;
 
 import java.io.*;
-import java.sql.SQLException;
-import java.util.List;
+
 
 public class Test {
 
@@ -99,28 +89,28 @@ public class Test {
         }
     }
 
-    public void reporteAlternancias(String CIs, String CodAula) throws Exception {
-        this.Conectar();
-
-        //Metodo que crea y devuelve Excel
-        XSSFWorkbook libro = generarReporteAlternancias(CIs, CodAula);
-
-        //Creamos un respuesta HTTP
-        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        //Le agregamos unas definiciones: Arhivo Adjunto(Descargar) , Nombre del Archivo
-        response.addHeader("Content-disposition", "attachment; filename=ReporteAlternancia.xlsx");
-        //Obtenemos la referencia al contenido de la respuesta HTTP
-        ServletOutputStream stream = response.getOutputStream();
-
-        //Escribimos el excel en el contenido de la respuesta HTTP
-        libro.write(stream);
-
-        //Guardamos
-        stream.flush();
-        //Cerramos
-        stream.close();
-        //Devolvemos la respuesta HTTP construida al navegador
-        FacesContext.getCurrentInstance().responseComplete();
-    }
+//    public void reporteAlternancias(String CIs, String CodAula) throws Exception {
+//        this.Conectar();
+//
+//        //Metodo que crea y devuelve Excel
+//        XSSFWorkbook libro = generarReporteAlternancias(CIs, CodAula);
+//
+//        //Creamos un respuesta HTTP
+//        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+//        //Le agregamos unas definiciones: Arhivo Adjunto(Descargar) , Nombre del Archivo
+//        response.addHeader("Content-disposition", "attachment; filename=ReporteAlternancia.xlsx");
+//        //Obtenemos la referencia al contenido de la respuesta HTTP
+//        ServletOutputStream stream = response.getOutputStream();
+//
+//        //Escribimos el excel en el contenido de la respuesta HTTP
+//        libro.write(stream);
+//
+//        //Guardamos
+//        stream.flush();
+//        //Cerramos
+//        stream.close();
+//        //Devolvemos la respuesta HTTP construida al navegador
+//        FacesContext.getCurrentInstance().responseComplete();
+//    }
 
 }

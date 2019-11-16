@@ -44,6 +44,15 @@
 
     </dependencies>
 
+    <repositories>
+        <repository>
+            <url>http://nexus.saas.hand-china.com/content/repositories/rdc/</url>
+            <id>oracle</id>
+            <layout>default</layout>
+            <name>Oracle Driver JDBC</name>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
