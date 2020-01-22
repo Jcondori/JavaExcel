@@ -55,6 +55,8 @@ public class XlsxToXml {
                         }
                         if (value.equals("") || value.length() == 0) {
                             record.append("<!--").append(field).append("-->");
+                        } else {
+                            record.append(field);
                         }
                     }
                 }
