@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class XlsxToXml {
 
-    private static final String XLSX_FILE_PATH = "C:\\Users\\Optimiza\\Downloads\\sunat.document.type.template.xlsx";
+    private static final String XLSX_FILE_PATH = "D:\\Documentos\\JavaProjects\\JavaExcel\\src\\main\\java\\com\\jcondori\\odoo\\sunat.document.type.template.xlsx";
 
     public static void main(String[] args) throws IOException {
         InputStream ExcelStream = new FileInputStream(XLSX_FILE_PATH);
@@ -36,21 +36,25 @@ public class XlsxToXml {
                 for (int cellNumber = 0; cellNumber < row.getLastCellNum(); cellNumber++) {
                     String titulo = titulos.get(cellNumber);
                     if (titulo.equals("id")) {
-                        record.append(" id=\"").append(model.replace(".", "_")).append("\">");
+                        record.append(" id=\"").append(dataFormatter.formatCellValue(row.getCell(cellNumber)).replace(".", "_")).append("\">");
                     } else {
-                        record.append("<field name=\"")
+//                        record.append("<field name=\"")
+                        StringBuilder field = new StringBuilder("<field name=\"")
                                 .append(titulo);
                         String value = dataFormatter.formatCellValue(row.getCell(cellNumber)).trim();
                         if (value.equals("") || value.length() == 0) {
-                            record.append("\"/>");
+                            field.append("\"/>");
                         } else if (value.contains("eval=") || value.contains("ref=")) {
-                            record.append("\" ")
+                            field.append("\" ")
                                     .append(value)
                                     .append("/>");
                         } else {
-                            record.append("\">")
+                            field.append("\">")
                                     .append(value)
                                     .append("</field>");
+                        }
+                        if (value.equals("") || value.length() == 0) {
+                            record.append("<!--").append(field).append("-->");
                         }
                     }
                 }
