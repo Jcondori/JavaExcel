@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class XlsxToXml {
 
-    private static final String XLSX_FILE_PATH = "D:\\Documentos\\JavaProjects\\JavaExcel\\src\\main\\java\\com\\jcondori\\odoo\\sunat.document.type.template.xlsx";
+    private static final String XLSX_FILE_PATH = "D:\\Documentos\\JavaProjects\\JavaExcel\\src\\main\\java\\com\\jcondori\\odoo\\sunat.document.type.xlsx";
 
     public static void main(String[] args) throws IOException {
         InputStream ExcelStream = new FileInputStream(XLSX_FILE_PATH);
